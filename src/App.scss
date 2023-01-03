@@ -1,0 +1,18 @@
+.lc-container-filter{
+  display: flex;
+  column-gap: 15px;
+}
+.lc-control-filters{
+  width: 20%;
+}
+.lc-container-list-items{
+  width: 80%;
+  .lc-list-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .lc-items{
+      width: 33%;
+    }
+  }
+}
