@@ -1,0 +1,143 @@
+[
+  {
+      "id": 92,
+      "post_title": "ALÁNTARA Y GARCÍA.- Almacén de Bebidas #2 #4",
+      "post_content": "<!-- wp:paragraph -->\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\n<!-- /wp:paragraph -->",
+      "post_excerpt": "orem Ipsum is simply dummy text of the printing and type",
+      "image": "http://devtest.local/wp-content/uploads/2022/12/20101018132728.gif",
+      "permalink": "http://devtest.local/socios/socio-1-5/",
+      "address": "Camino de los Toros, s/n 19250 Sigüenza",
+      "email": "email@mail.com",
+      "phone": "607 82 07 14",
+      "logo": "http://devtest.local/wp-content/uploads/2022/12/logo.jpg",
+      "terminoSector": [
+          {
+              "id": 9,
+              "name": "Construcción",
+              "slug": "construccion"
+          },
+          {
+              "id": 15,
+              "name": "Servicios",
+              "slug": "servicios"
+          }
+      ],
+      "terminoTipo": [
+          {
+              "id": 20,
+              "name": "Profesional",
+              "slug": "profesional"
+          }
+      ],
+      "terminoActividad": [
+          {
+              "id": 13,
+              "name": "Alojamientos",
+              "slug": "alojamientos"
+          },
+          {
+              "id": 14,
+              "name": "Comercio",
+              "slug": "comercio"
+          }
+      ]
+  },
+  {
+      "id": 91,
+      "post_title": "ALÁNTARA Y GARCÍA.- Almacén de Bebidas #2 #3",
+      "post_content": "<!-- wp:paragraph -->\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\n<!-- /wp:paragraph -->",
+      "post_excerpt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#8217;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into [&hellip;]",
+      "image": "http://devtest.local/wp-content/uploads/2022/12/20101018132728.gif",
+      "permalink": "http://devtest.local/socios/socio-1-4/",
+      "address": "Camino de los Toros, s/n 19250 Sigüenza",
+      "email": "",
+      "phone": "607 82 07 14",
+      "logo": "http://devtest.local/wp-content/uploads/2022/12/logo.jpg",
+      "terminoSector": [
+          {
+              "id": 11,
+              "name": "Industria",
+              "slug": "industria"
+          }
+      ],
+      "terminoTipo": [
+          {
+              "id": 19,
+              "name": "Empresa",
+              "slug": "empresa"
+          }
+      ],
+      "terminoActividad": [
+          {
+              "id": 13,
+              "name": "Alojamientos",
+              "slug": "alojamientos"
+          }
+      ]
+  },
+  {
+      "id": 90,
+      "post_title": "ALÁNTARA Y GARCÍA.- Almacén de Bebidas #2 #2",
+      "post_content": "<!-- wp:paragraph -->\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\n<!-- /wp:paragraph -->",
+      "post_excerpt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#8217;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into [&hellip;]",
+      "image": "http://devtest.local/wp-content/uploads/2022/12/20101018132728.gif",
+      "permalink": "http://devtest.local/socios/socio-1-3/",
+      "address": "Camino de los Toros, s/n 19250 Sigüenza",
+      "email": "",
+      "phone": "607 82 07 14",
+      "logo": "http://devtest.local/wp-content/uploads/2022/12/logo.jpg",
+      "terminoSector": [
+          {
+              "id": 9,
+              "name": "Construcción",
+              "slug": "construccion"
+          },
+          {
+              "id": 15,
+              "name": "Servicios",
+              "slug": "servicios"
+          }
+      ],
+      "terminoTipo": [
+          {
+              "id": 20,
+              "name": "Profesional",
+              "slug": "profesional"
+          }
+      ],
+      "terminoActividad": [
+          {
+              "id": 13,
+              "name": "Alojamientos",
+              "slug": "alojamientos"
+          }
+      ]
+  },
+  {
+      "id": 21,
+      "post_title": "ALÁNTARA Y GARCÍA.- Almacén de Bebidas",
+      "post_content": "<!-- wp:paragraph -->\n<p>Almacén de Bebidas. Distribuidores oficiales de Cervezas Amstel, Heineken, Cruzcampo y Productos Schweppes.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->",
+      "post_excerpt": "Almacén de Bebidas. Distribuidores oficiales de Cervezas Amstel, Heineken, Cruzcampo y Productos Schweppes.",
+      "image": "http://devtest.local/wp-content/uploads/2022/12/20101018132728.gif",
+      "permalink": "http://devtest.local/socios/socio-1/",
+      "address": "Camino de los Toros, s/n 19250 Sigüenza",
+      "email": "",
+      "phone": "607 82 07 14",
+      "logo": "http://devtest.local/wp-content/uploads/2022/12/logo.jpg",
+      "terminoSector": [
+          {
+              "id": 12,
+              "name": "Comercio",
+              "slug": "comercio"
+          }
+      ],
+      "terminoTipo": [
+          {
+              "id": 19,
+              "name": "Empresa",
+              "slug": "empresa"
+          }
+      ],
+      "terminoActividad": []
+  }
+]

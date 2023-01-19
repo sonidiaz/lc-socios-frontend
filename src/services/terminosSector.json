@@ -1,0 +1,18 @@
+[
+  {
+      "value": "servicios",
+      "label": "Servicios"
+  },
+  {
+      "value": "industria",
+      "label": "Industria"
+  },
+  {
+      "value": "construccion",
+      "label": "Construcción"
+  },
+  {
+      "value": "comercio",
+      "label": "Comercio"
+  }
+]

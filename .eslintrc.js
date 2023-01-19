@@ -20,10 +20,13 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "security"],
   rules: {
+    "react/style-prop-object": "error",
+    "no-debugger": 0,
     "import/extensions": [
       "error",
       "ignorePackages",
       { ts: "never", tsx: "never" },
+      
     ],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": "error",
