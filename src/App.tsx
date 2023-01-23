@@ -18,7 +18,7 @@ const App = () => {
   const [dataSector, setDataSector] = useState('')
   const [dataTipoSocio, setTipoSocio] = useState('')
   const [showFlagNodata, setShowFlagNodata] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
   const [loaderData, setLoaderData] = useState(false)
   const [detail, setDetail] = useState<any>({})
   const [store, setStore] = useState<any>({})
@@ -27,17 +27,7 @@ const App = () => {
   const [filterItemTipo, setFilterItemTipo] = useState([{value: 'todos', label: 'Todos los socios'}])
   const [filterItemSector, setFilterItemSector] = useState([{value: 'todos', label: 'Todos los Sectores'}])
   const [showModal, setShowModal] = useState(false);
-  // const selectTheme = (theme: any) => {
-  //   return {
-  //     ...theme,
-  //     borderRadius: 5,
-  //     colors: {
-  //       ...theme.colors,
-  //       primary25: 'white',
-  //       primary: '#1AA19A',
-  //     }
-  //   }
-  // }
+
   useEffect(() => {
 
     dataFromWp.append('action', 'getPostContent')
@@ -58,22 +48,15 @@ const App = () => {
         setShowFlagNodata(true)
       }
       setStore({info: data})
-      
       setLoaderData(false)
-
-
       // eslint-disable-next-line arrow-body-style
       const chunk = (arr:[], size:number) => arr.reduce((acc:any, e, i) => {return (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc)}, []);
-      const tempChunk = chunk(data.data, 2);
-      console.log(tempChunk);
+      const tempChunk = chunk(data.data, 3);
       setStoreToPagination({info: tempChunk})
+      
     }
     getDataFromApi();
   }, [dataSector, dataTipoSocio])
-
-  useEffect(() => {
-    console.log(storeToPagination)
-  }, [storeToPagination])
 
   // eslint-disable-next-line no-unused-vars
   const handleFindData = (e: any) => {
@@ -111,7 +94,6 @@ const App = () => {
           placeholder="Todos los socios " 
           options={filterItemTipo} 
           onChange={(e:any) => {
-            setCurrentPage(-1)
             setTipoSocio(e.value)
         }}/>
         <Select 
@@ -121,7 +103,6 @@ const App = () => {
           placeholder="Todos los sectores" 
           options={devURL ? mockTermTipo : filterItemSector} 
           onChange={(e:any) => {
-            setCurrentPage(-1)
             setDataSector(e.value)
           }}/>
       </div>
@@ -136,7 +117,8 @@ const App = () => {
           !loaderData ? (
             <div className="lc-list-items">
             {
-              (store.info !== undefined) && store.info.data.map((post: any) => {
+              // (store.info !== undefined) && store.info.data.map((post: any) => {
+                (storeToPagination.info !== undefined && storeToPagination.info.length > 0) && storeToPagination.info[(currentPage === -1) ? 1 : currentPage].map((post: any) => {
                 return (
                   <div className='lc-items' key={post.id}>
                     <div className='lc-tag-detail tipo'>
@@ -189,12 +171,24 @@ const App = () => {
                   <p>{detail.address}</p>
                   <p>{detail.phone}</p>
                   <p>{detail.email}</p>
+                  {
+                    (detail.maps) && (
+                      <a href={detail.maps} className="lc-lin-map" rel="noreferrer" target="_blank">Ver en Google Maps</a>
+                    )
+                  }
                 </div>
                 <div className="content-block main-content">
-                  <h3 className='title-fields'>Descripción</h3>
-                  <div className='contenido'>
-                    <p className='content_post' dangerouslySetInnerHTML={{__html: detail.post_content}} />
-                  </div>
+                  {
+                    (detail.post_content !== '') && (
+                      <>
+                      <h3 className='title-fields'>Descripción</h3>
+                        <div className='contenido'>
+                          <p className='content_post' dangerouslySetInnerHTML={{__html: detail.post_content}} />
+                      </div>
+                      </>
+                    )
+                  }
+                  
                 </div>
               </div>
           </Modal>
@@ -202,18 +196,18 @@ const App = () => {
       }
     </div>
     <div className="lc-pagination">
-      {
-        console.log(storeToPagination)
-      }
-        <button className="lc-button-page" onClick={() => {
-          setCurrentPage(1)
-        }}>1</button>
-        <button className="lc-button-page" onClick={() => {
-          setCurrentPage(2)
-        }}>2</button>
-        <button className="lc-button-page" onClick={() => {
-          setCurrentPage(3)
-        }}>3</button>
+    {
+      (storeToPagination.info !== undefined && storeToPagination.info.length > 0) && (
+        storeToPagination.info.map((data:any, inx: number) => {
+          return (
+              // eslint-disable-next-line react/no-array-index-key
+              <button key={inx} className="lc-button-page" style={{background: (inx === currentPage) ? '#f8f1e7': ''}} onClick={() => {
+                setCurrentPage(inx)
+              }}>{inx + 1}</button>
+          )
+        })
+      )
+    }
     </div>
     </>
   );

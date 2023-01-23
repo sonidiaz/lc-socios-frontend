@@ -210,5 +210,14 @@
     padding: 10px;
     background: white;
     border: 0;
+    border:1px solid white;
+    cursor: pointer;
+    &:hover{
+      background-color: transparent;
+    }
   }
+}
+.lc-lin-map{
+  color:rgba(0, 0, 0, 0.7);
+  text-decoration: underline;
 }
