@@ -10,6 +10,7 @@ import mock from './services/mock.json'
 import mockTermSector from './services/terminosSector.json'
 import mockTermTipo from './services/terminosTipo.json'
 import Terms from './components/Terms';
+import LoaderSpinners from './components/LoaderSpinners';
 
 const devURL = window.location.origin === 'http://localhost:3000';
 const dataFromWp = new FormData();
@@ -22,7 +23,6 @@ const App = () => {
   const [loaderData, setLoaderData] = useState(false)
   const [detail, setDetail] = useState<any>({})
   const [store, setStore] = useState<any>({})
-  // const [totalData, setTotalData] = useState<any>(0)
   const [storeToPagination, setStoreToPagination] = useState<any>({})
   const [filterItemTipo, setFilterItemTipo] = useState([{value: 'todos', label: 'Todos los socios'}])
   const [filterItemSector, setFilterItemSector] = useState([{value: 'todos', label: 'Todos los Sectores'}])
@@ -39,6 +39,7 @@ const App = () => {
     const getDataFromApi = async() => {
       setShowFlagNodata(false)
       setLoaderData(true)
+      setCurrentPage(0)
       const data = await getServicesTerms(dataFromWp)
       if(devURL) {
         setStore({info:{data: mock}})
@@ -51,8 +52,11 @@ const App = () => {
       setLoaderData(false)
       // eslint-disable-next-line arrow-body-style
       const chunk = (arr:[], size:number) => arr.reduce((acc:any, e, i) => {return (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc)}, []);
-      const tempChunk = chunk(data.data, 3);
+
+
+      const tempChunk = chunk(data.data, 6);
       setStoreToPagination({info: tempChunk})
+
       
     }
     getDataFromApi();
@@ -82,7 +86,13 @@ const App = () => {
       ])
     }
   }, [])
-
+  const cutString = (text:string, length: number) => {
+    if(text === '') return ''
+    if(text.length < 120) return text
+    const substring = text.substring(0, length);
+    const lastSpaceIndex = substring.lastIndexOf(" ");
+    return `${text.substring(0, lastSpaceIndex)  }[...]`;
+  }
   return (
     <>
     <div className='lc-container-filter'>
@@ -121,14 +131,16 @@ const App = () => {
                 (storeToPagination.info !== undefined && storeToPagination.info.length > 0) && storeToPagination.info[(currentPage === -1) ? 1 : currentPage].map((post: any) => {
                 return (
                   <div className='lc-items' key={post.id}>
-                    <div className='lc-tag-detail tipo'>
-                        <Terms data={post.terminoTipo}/>
-                    </div>
-                    <div className='lc-tag-detail sector'>
-                      <Terms data={post.terminoSector}/>
+                    <div className="lc-flex-content">
+                      <div className='lc-tag-detail tipo'>
+                          <Terms data={post.terminoTipo}/>
+                      </div>
+                      <div className='lc-tag-detail sector'>
+                        <Terms data={post.terminoSector}/>
+                      </div>
                     </div>
                     <h2 className='title-post'>{post.post_title}</h2>
-                    <p className='content_post' dangerouslySetInnerHTML={{__html: post.post_excerpt.substring(0,120)}} />
+                    <p className='content_post' dangerouslySetInnerHTML={{__html: cutString(post.post_excerpt, 120)}} />
                     <button onClick={() => {
                       handleFindData(post.id)
                     }}>Más información</button>
@@ -138,7 +150,7 @@ const App = () => {
             }
           </div>
           ) : (
-            <span>Buscando datos...</span>
+            <LoaderSpinners>Buscando socios</LoaderSpinners>
           )
         }
       </div>
@@ -158,22 +170,25 @@ const App = () => {
                   )
                 }
                 <div className='content-block terminos' style={{width: (detail.logo === '') ? '100%' : ''}}>
-                  <div className='lc-tag-detail tipo'>
-                    <Terms data={detail.terminoTipo}/>
-                  </div>
-                  <div className='lc-tag-detail sector'>
-                    <Terms data={detail.terminoSector}/>
+                  <div style={{display: (detail.logo === '') ? 'flex' : ''}}>
+                    <div className='lc-tag-detail tipo'>
+                      <Terms data={detail.terminoTipo}/>
+                    </div>
+                    <div className='lc-tag-detail sector'>
+                      <Terms data={detail.terminoSector}/>
+                    </div>
                   </div>
                 </div>
                 <div className="content-block info-content">
                   <h2 className='title-post'>{detail.post_title}</h2>
                   <h3 className='title-fields'>Contacto</h3>
-                  <p>{detail.address}</p>
-                  <p>{detail.phone}</p>
-                  <p>{detail.email}</p>
+                  {(detail.address !== '') && (<p>{detail.address}</p>)}
+                  {(detail.phone !== '') && (<p>{detail.phone}</p>)}
+                  {(detail.email !== '') && (<p>{detail.email}</p>)}
+                  {(detail.web !== '') && (<a href={`${detail.web}`} target="_blank" rel="noreferrer">{detail.web.split('//')[1]}</a>)}
                   {
                     (detail.maps) && (
-                      <a href={detail.maps} className="lc-lin-map" rel="noreferrer" target="_blank">Ver en Google Maps</a>
+                      <p><a href={detail.maps} rel="noreferrer" target="_blank">Ver en Google Maps</a></p>
                     )
                   }
                 </div>
